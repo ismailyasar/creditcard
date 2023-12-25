@@ -1,29 +1,11 @@
 <form [formGroup]="cardForm">
-  <input type="text" formControlName="name">
-  <div *ngIf="cardForm.get('name')?.errors?.['required']">
-    <p style="color:red">
-        *Zorunlu Alan
-    </p>
-  </div>
-  <div *ngIf="cardForm.get('name')?.errors?.['minlength']">
-    <p style="color:red">
-        *Girdiğiniz isim {{cardForm.get('name')?.errors?.['minlength']?.['actualLength']}} karakter içeriyor.
-        Lütfen en az {{cardForm.get('name')?.errors?.['minlength']?.['requiredLength']}} adet karakter giriniz
-    </p>
-  </div>
+ <app-input [control] = "cardForm"></app-input>
 </form>
-
-<div>
-    form içeriği {{cardForm.value | json}}
-</div>
-<div>
-    form geçerli mi?  {{cardForm.valid ? 'Evet':'Hayır'}}
-</div>
 <div>
     <h1>Form Hataları</h1>
     <div>
         <h5>Name</h5>
-        <p>{{cardForm.get('name')?.errors | json}}</p>
+        <p>{{cardForm.get('name')?.errors | json}}</p> 
     </div>
     
-</div>
+</div> 
