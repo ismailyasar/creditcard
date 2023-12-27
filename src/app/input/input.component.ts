@@ -1,5 +1,5 @@
 import { Component,Input} from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -7,5 +7,13 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./input.component.css']
 })
 export class InputComponent {
-  @Input() control!:FormGroup;
+  @Input() control!:FormControl;
+  @Input() label:string = "";
+  @Input() placeholder!:string;
+
+
+  showErrors(){
+    const {dirty,touched,errors} = this.control;
+    return dirty && touched && errors;
+  }
 }

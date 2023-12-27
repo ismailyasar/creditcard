@@ -1,16 +1,27 @@
-<input type="text" formControlName="name">
-<ng-container 
-*ngIf="control.get('name')?.dirty && control.get('name')?.dirty && control.get('name')?.errors"
->
-<div *ngIf="control.get('name')?.errors?.['required']">
-  <p style="color:red">
-      *Zorunlu Alan
-  </p>
+<div class="field">
+  <label class="label">{{ label }}</label>
 </div>
-<div *ngIf="control.get('name')?.errors?.['minlength']">
-  <p style="color:red">
-      *Girdiğiniz isim {{control.get('name')?.errors?.['minlength']?.['actualLength']}} karakter içeriyor.
-      Lütfen en az {{control.get('name')?.errors?.['minlength']?.['requiredLength']}} adet karakter giriniz
-  </p>
+<div class="control">
+  <input
+    class="input"
+    type="text"
+    [formControl]="control"
+    [ngClass]="{ 'is-danger': showErrors() }"
+    [placeholder]="placeholder"
+  />
 </div>
-</ng-container> 
+
+<ng-container *ngIf="showErrors()">
+  <div class="help is-danger" *ngIf="control?.errors?.['required']">
+    *Zorunlu Alan
+  </div>
+
+  <div class="help is-danger" *ngIf="control.errors?.['minlength']">
+    <p style="color: red">
+      *Girdiğiniz isim
+      {{control?.errors?.['minlength']?.['actualLength']}} karakter içeriyor.
+      Lütfen en az {{control?.errors?.['minlength']?.['requiredLength']}} adet
+      karakter giriniz
+    </p>
+  </div>
+</ng-container>

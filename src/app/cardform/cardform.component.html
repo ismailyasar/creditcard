@@ -1,11 +1,7 @@
-<form [formGroup]="cardForm">
- <app-input [control] = "cardForm"></app-input>
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+ <app-input [control] = "cardForm.get('name')" label="Ad Soyad" placeholder="Ahmet Tuna"></app-input>
+ <app-input [control] = "cardForm.get('cardNumber')" label="Kart Numarası" placeholder="1234567887654321"></app-input>
+ <app-input [control] = "cardForm.get('expiration')" label="Son Kullanma Tarihi" placeholder="MM/YY"></app-input>
+ <app-input [control] = "cardForm.get('securityCode')" label="Güvenlik Kodu" placeholder="123"></app-input>
+ <button class="button is-primary" type="submit" [disabled]="cardForm.invalid">Kaydet</button>
 </form>
-<div>
-    <h1>Form Hataları</h1>
-    <div>
-        <h5>Name</h5>
-        <p>{{cardForm.get('name')?.errors | json}}</p> 
-    </div>
-    
-</div> 
