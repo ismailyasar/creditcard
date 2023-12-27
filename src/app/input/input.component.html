@@ -15,12 +15,21 @@
   <div class="help is-danger" *ngIf="control?.errors?.['required']">
     *Zorunlu Alan
   </div>
-
+ <!--Minimum Control-->
   <div class="help is-danger" *ngIf="control.errors?.['minlength']">
     <p style="color: red">
-      *Girdiğiniz isim
+      *Girdiğiniz değer
       {{control?.errors?.['minlength']?.['actualLength']}} karakter içeriyor.
       Lütfen en az {{control?.errors?.['minlength']?.['requiredLength']}} adet
+      karakter giriniz
+    </p>
+  </div>
+ <!--Maximum Control-->
+  <div class="help is-danger" *ngIf="control.errors?.['maxlength']">
+    <p style="color: red">
+      *Girdiğiniz değer
+      {{control?.errors?.['maxlength']?.['actualLength']}} karakter içeriyor.
+      Lütfen en fazla {{control?.errors?.['maxlength']?.['requiredLength']}} adet
       karakter giriniz
     </p>
   </div>
